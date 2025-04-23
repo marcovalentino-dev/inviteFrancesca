@@ -1,17 +1,14 @@
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f8ff;
-    color: #333;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-image: url('background.jpg'); /* Inserisci un'immagine di sfondo se vuoi */
-    background-size: cover;
-    background-position: center;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  font-family: 'Courier New', Courier, monospace;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 .container {
