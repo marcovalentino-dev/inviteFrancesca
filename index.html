@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Candidate Application – Coffee Edition</title>
+  <title>Candidate Application – Coffee & Fun Edition</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
@@ -17,14 +17,18 @@
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    button.option:hover {
+      transform: scale(1.05);
+      transition: all 0.2s ease-in-out;
+    }
   </style>
 </head>
 <body class="bg-gradient-to-r from-yellow-100 to-pink-200 min-h-screen flex items-center justify-center p-6">
 
   <div class="bg-white shadow-2xl rounded-2xl p-8 max-w-md w-full text-center">
 
-    <h1 class="text-3xl font-bold mb-4">Candidate Application ☕</h1>
-    <p class="mb-6 text-gray-700">Position: <span class="font-semibold">Coffee Companion</span></p>
+    <h1 class="text-3xl font-bold mb-4">Candidate Application ☕🎉</h1>
+    <p class="mb-6 text-gray-700">Position: <span class="font-semibold">Coffee & Fun Companion</span></p>
 
     <!-- NDA -->
     <div id="nda-section">
@@ -51,15 +55,18 @@
       </ul>
 
       <div class="text-center mt-6">
-        <button id="final-button" class="bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition-colors">Accetta il caffè? ☕💌</button>
+        <p class="mb-3 font-semibold text-gray-800">Come vuoi “intervistare” il candidato? 😏</p>
+        <div class="grid grid-cols-1 gap-3">
+          <button class="option bg-red-400 text-white px-4 py-2 rounded-full hover:bg-red-500" onclick="chooseOption('Go-Kart 🏎️')">Go Kart per un po' di adrenalina (ma in sicurezza)</button>
+          <button class="option bg-blue-400 text-white px-4 py-2 rounded-full hover:bg-blue-500" onclick="chooseOption('Passeggiata 🌊')">Passeggiata vicino al mare</button>
+          <button class="option bg-green-400 text-white px-4 py-2 rounded-full hover:bg-green-500" onclick="chooseOption('Drink 🍹')">Chiacchierata davanti ad un drink</button>
+          <button class="option bg-purple-400 text-white px-4 py-2 rounded-full hover:bg-purple-500" onclick="chooseOption('Sorpresa 😏')">Non ti preoccupare, decido io</button>
+        </div>
       </div>
     </div>
 
     <!-- Messaggio finale -->
-    <div id="final-message" class="hidden fade-in mt-6 text-gray-800 font-semibold text-lg">
-      Fantastico! 🎉<br>
-      Non vedo l’ora di prendere quel caffè insieme!
-    </div>
+    <div id="final-message" class="hidden fade-in mt-6 text-gray-800 font-semibold text-lg"></div>
 
   </div>
 
@@ -67,7 +74,6 @@
     const checkbox = document.getElementById('nda-checkbox');
     const ndaButton = document.getElementById('nda-button');
     const curriculumSection = document.getElementById('curriculum-section');
-    const finalButton = document.getElementById('final-button');
     const finalMessage = document.getElementById('final-message');
 
     checkbox.addEventListener('change', () => {
@@ -79,10 +85,26 @@
       curriculumSection.classList.remove('hidden');
     });
 
-    finalButton.addEventListener('click', () => {
+    function chooseOption(option) {
       curriculumSection.classList.add('hidden');
+      let message = "";
+      switch(option) {
+        case 'Go-Kart 🏎️':
+          message = "Adrenalina approvata! 🏎️ Non vedo l'ora di correre (in sicurezza) insieme!";
+          break;
+        case 'Passeggiata 🌊':
+          message = "Fantastico! 🌊 Una passeggiata sul mare suona perfetta.";
+          break;
+        case 'Drink 🍹':
+          message = "Drink e chiacchiere? 🍹 Sono pronto a conoscerti meglio!";
+          break;
+        case 'Sorpresa 😏':
+          message = "Sorpresa accettata 😏 Non vedo l'ora di scoprire cosa hai in mente!";
+          break;
+      }
+      finalMessage.innerHTML = message;
       finalMessage.classList.remove('hidden');
-    });
+    }
   </script>
 
 </body>
