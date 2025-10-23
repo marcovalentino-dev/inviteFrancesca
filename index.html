@@ -3,44 +3,87 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Un messaggio da Marco</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Candidate Application – Position: Boyfriend</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .hidden { display: none; }
+    .fade-in {
+      animation: fadeIn 1s ease-in forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
-<body>
-  <audio autoplay loop>
-    <source src="audio.mp3" type="audio/mpeg">
-    Il tuo browser non supporta l'audio HTML5.
-  </audio>
-  <div class="container">
-    <p class="typewriter">
-      Lo so, Francesca, forse è un po' strano ricevere un sito web<br>
-      invece di un caffè... ma spero che ti abbia fatto sorridere! 😄<br>
+<body class="bg-gradient-to-r from-pink-100 to-purple-200 min-h-screen flex items-center justify-center p-6">
 
-      <br><br>
-      Se questo messaggio ti ha strappato un sorriso, il prossimo drink lo offro realmente.<br><br>
-      – Marco
-    </p>
-    <div class="buttons">
-      <button class="btn" id="option1">Andare a bere qualcosa con Marco</button>
-      <button class="btn" id="option2">Andare a bere qualcosa con Marco ma facendo finta sia stata un’idea tua</button>
-      <button class="btn" id="option3">Ignorare tutto… ma poi pentirsene tra 5 giorni</button>
+  <div class="bg-white shadow-2xl rounded-2xl p-8 max-w-md w-full text-center">
+
+    <h1 class="text-3xl font-bold mb-4">Candidate Application</h1>
+    <p class="mb-6 text-gray-700">Position: <span class="font-semibold">Boyfriend</span></p>
+
+    <!-- NDA -->
+    <div id="nda-section">
+      <p class="mb-4 text-gray-800">
+        Prima di continuare, entrambe le parti devono accettare il NDA 🤝<br>
+        <span class="font-semibold">Bilaterale:</span><br>
+        • Io non divulgherò informazioni sull'HR.<br>
+        • L'HR non divulgherà informazioni sul candidato perfetto.
+      </p>
+      <label class="inline-flex items-center mt-2">
+        <input type="checkbox" id="nda-checkbox" class="form-checkbox h-5 w-5 text-pink-500">
+        <span class="ml-2 text-gray-700">Accetto entrambe le condizioni dell'NDA</span>
+      </label>
+      <button id="nda-button" class="mt-4 bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition-colors" disabled>Procedi</button>
     </div>
-  </div>
-</body>
-    <script>
-        // Funzione per cambiare testo al passaggio del mouse
-        document.getElementById("option1").addEventListener("mouseover", function() {
-            this.textContent = "Ottima scelta 😎";
-        });
-        document.getElementById("option1").addEventListener("mouseout", function() {
-            this.textContent = "Andare a bere qualcosa con Marco";
-        });
 
-        document.getElementById("option3").addEventListener("mouseover", function() {
-            this.textContent = "Sei sicura? 👀";
-        });
-        document.getElementById("option3").addEventListener("mouseout", function() {
-            this.textContent = "Ignorare tutto… ma poi pentirsene tra 5 giorni";
-        });
-    </script>
+    <!-- Curriculum -->
+    <div id="curriculum-section" class="hidden fade-in mt-6 text-left">
+      <h2 class="text-2xl font-semibold mb-3">Curriculum del Candidato Perfetto 💼</h2>
+      <ul class="list-disc pl-5 space-y-2 text-gray-700">
+        <li><span class="font-semibold">Esperienza lavorativa:</span> Esperto in sorrisi, abbracci e ascolto attivo.</li>
+        <li><span class="font-semibold">Competenze:</span> Cucina, Netflix, viaggi last-minute, sarcasmo leggero.</li>
+        <li><span class="font-semibold">Obiettivi professionali:</span> Far battere il tuo cuore più velocemente.</li>
+      </ul>
+
+      <div class="text-center mt-6">
+        <button id="final-button" class="bg-purple-500 text-white px-6 py-2 rounded-full hover:bg-purple-600 transition-colors">Firma il colloquio 💌</button>
+      </div>
+    </div>
+
+    <!-- Messaggio finale -->
+    <div id="final-message" class="hidden fade-in mt-6 text-gray-800 font-semibold text-lg">
+      Colloquio approvato ✅<br>
+      Il candidato è pronto a conoscerti meglio!
+    </div>
+
+  </div>
+
+  <script>
+    const checkbox = document.getElementById('nda-checkbox');
+    const ndaButton = document.getElementById('nda-button');
+    const curriculumSection = document.getElementById('curriculum-section');
+    const finalButton = document.getElementById('final-button');
+    const finalMessage = document.getElementById('final-message');
+
+    checkbox.addEventListener('change', () => {
+      ndaButton.disabled = !checkbox.checked;
+    });
+
+    ndaButton.addEventListener('click', () => {
+      document.getElementById('nda-section').classList.add('hidden');
+      curriculumSection.classList.remove('hidden');
+    });
+
+    finalButton.addEventListener('click', () => {
+      curriculumSection.classList.add('hidden');
+      finalMessage.classList.remove('hidden');
+    });
+  </script>
+
+</body>
 </html>
