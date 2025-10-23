@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Candidatura Spontanea -Marco</title>
+  <title>Candidatura Spontanea - Marco</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
@@ -23,50 +23,67 @@
     }
   </style>
 </head>
-<body class="bg-gradient-to-r from-yellow-100 to-pink-200 min-h-screen flex items-center justify-center p-6">
 
-  <div class="bg-white shadow-2xl rounded-2xl p-8 max-w-md w-full text-center">
+<body class="bg-gradient-to-r from-yellow-100 to-pink-200 min-h-screen flex items-center justify-center p-4 sm:p-6">
 
-    <h1 class="text-3xl font-bold mb-4">Candidate Application ☕🎉</h1>
-    <p class="mb-6 text-gray-700">Posizione: <span class="font-semibold">Una serata in compagnia</span></p>
+  <div class="bg-white shadow-2xl rounded-2xl p-6 sm:p-8 max-w-md w-full text-center">
+
+    <h1 class="text-2xl sm:text-3xl font-bold mb-4 break-words">Candidate Application ☕🎉</h1>
+    <p class="mb-6 text-gray-700 text-sm sm:text-base">
+      Posizione: <span class="font-semibold">Una serata in compagnia</span>
+    </p>
 
     <!-- NDA -->
     <div id="nda-section">
-      <p class="mb-4 text-gray-800">
+      <p class="mb-4 text-gray-800 text-sm sm:text-base leading-relaxed">
         Prima di continuare, entrambe le parti devono accettare il piccolo NDA 🤝<br>
         <span class="font-semibold">Bilaterale:</span><br>
         • Io non condividerò dettagli su di te.<br>
         • Tu non condividerai dettagli su di me.
       </p>
-      <label class="inline-flex items-center mt-2">
-        <input type="checkbox" id="nda-checkbox" class="form-checkbox h-5 w-5 text-yellow-500">
-        <span class="ml-2 text-gray-700">Accetto entrambe le condizioni dell'NDA</span>
+
+      <label class="inline-flex items-center mt-2 text-left">
+        <input type="checkbox" id="nda-checkbox" class="form-checkbox h-5 w-5 text-yellow-500 flex-shrink-0">
+        <span class="ml-2 text-gray-700 text-sm sm:text-base">Accetto entrambe le condizioni dell'NDA</span>
       </label>
-      <button id="nda-button" class="mt-4 bg-yellow-500 text-white px-6 py-2 rounded-full hover:bg-yellow-600 transition-colors" disabled>Procedi</button>
+
+      <button id="nda-button" 
+              class="mt-4 w-full sm:w-auto bg-yellow-500 text-white px-6 py-2 rounded-full hover:bg-yellow-600 transition-colors disabled:opacity-50"
+              disabled>
+        Procedi
+      </button>
     </div>
 
     <!-- Curriculum -->
     <div id="curriculum-section" class="hidden fade-in mt-6 text-left">
-      <h2 class="text-2xl font-semibold mb-3">Curriculum del Candidato Ideale ☕</h2>
-      <ul class="list-disc pl-5 space-y-2 text-gray-700">
+      <h2 class="text-xl sm:text-2xl font-semibold mb-3">Curriculum del Candidato Ideale ☕</h2>
+      <ul class="list-disc pl-5 space-y-2 text-gray-700 text-sm sm:text-base leading-relaxed">
         <li><span class="font-semibold">Esperienza:</span> Ascoltatore attento e compagno di risate improvvise.</li>
         <li><span class="font-semibold">Competenze:</span> Passeggiate spontanee, caffè perfetto, conversazioni leggere ma profonde.</li>
         <li><span class="font-semibold">Obiettivi:</span> Condividere un momento piacevole insieme e, chissà, scoprire se c’è chimica.</li>
       </ul>
 
       <div class="text-center mt-6">
-        <p class="mb-3 font-semibold text-gray-800">Come vuoi “intervistare” il candidato? 😏</p>
+        <p class="mb-3 font-semibold text-gray-800 text-sm sm:text-base">Come vuoi “intervistare” il candidato? 😏</p>
         <div class="grid grid-cols-1 gap-3">
-          <button class="option bg-red-400 text-white px-4 py-2 rounded-full hover:bg-red-500" onclick="chooseOption('Go-Kart 🏎️')">Go Kart per un po' di adrenalina (ma in sicurezza)</button>
-          <button class="option bg-blue-400 text-white px-4 py-2 rounded-full hover:bg-blue-500" onclick="chooseOption('Passeggiata 🌊')">Passeggiata vicino al mare</button>
-          <button class="option bg-green-400 text-white px-4 py-2 rounded-full hover:bg-green-500" onclick="chooseOption('Drink 🍹')">Chiacchierata davanti ad un drink</button>
-          <button class="option bg-purple-400 text-white px-4 py-2 rounded-full hover:bg-purple-500" onclick="chooseOption('Sorpresa 😏')">Non ti preoccupare, decido io</button>
+          <button class="option bg-red-400 text-white px-4 py-3 rounded-full hover:bg-red-500 text-sm sm:text-base" onclick="chooseOption('Go-Kart 🏎️')">
+            Go Kart per un po' di adrenalina (ma in sicurezza)
+          </button>
+          <button class="option bg-blue-400 text-white px-4 py-3 rounded-full hover:bg-blue-500 text-sm sm:text-base" onclick="chooseOption('Passeggiata 🌊')">
+            Passeggiata vicino al mare
+          </button>
+          <button class="option bg-green-400 text-white px-4 py-3 rounded-full hover:bg-green-500 text-sm sm:text-base" onclick="chooseOption('Drink 🍹')">
+            Chiacchierata davanti ad un drink
+          </button>
+          <button class="option bg-purple-400 text-white px-4 py-3 rounded-full hover:bg-purple-500 text-sm sm:text-base" onclick="chooseOption('Sorpresa 😏')">
+            Non ti preoccupare, decido io
+          </button>
         </div>
       </div>
     </div>
 
     <!-- Messaggio finale -->
-    <div id="final-message" class="hidden fade-in mt-6 text-gray-800 font-semibold text-lg"></div>
+    <div id="final-message" class="hidden fade-in mt-6 text-gray-800 font-semibold text-base sm:text-lg leading-relaxed text-center"></div>
 
   </div>
 
@@ -93,19 +110,18 @@
           message = "Adrenalina approvata! 🏎️ Non vedo l'ora di correre (in sicurezza) insieme! Attendo un tuo messaggio con quello che hai scelto!";
           break;
         case 'Passeggiata 🌊':
-          message = "Fantastico! 🌊 Una passeggiata sul mare suona perfetta.  Attendo un tuo messaggio con quello che hai scelto!";
+          message = "Fantastico! 🌊 Una passeggiata sul mare suona perfetta. Attendo un tuo messaggio con quello che hai scelto!";
           break;
         case 'Drink 🍹':
-          message = "Drink e chiacchiere? 🍹 Sono pronto a conoscerti meglio!  Attendo un tuo messaggio con quello che hai scelto!";
+          message = "Drink e chiacchiere? 🍹 Sono pronto a conoscerti meglio! Attendo un tuo messaggio con quello che hai scelto!";
           break;
         case 'Sorpresa 😏':
-          message = "Sorpresa accettata 😏 Non vedo l'ora di scoprire cosa hai in mente!  Attendo un tuo messaggio con quello che hai scelto!";
+          message = "Sorpresa accettata 😏 Non vedo l'ora di scoprire cosa hai in mente! Attendo un tuo messaggio con quello che hai scelto!";
           break;
       }
       finalMessage.innerHTML = message;
       finalMessage.classList.remove('hidden');
     }
   </script>
-
 </body>
 </html>
