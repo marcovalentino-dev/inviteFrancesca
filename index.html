@@ -15,7 +15,7 @@ body {
 /* CONTENITORE */
 .wrapper {
   position: relative;
-  width: 360px;
+  width: 380px;
   margin: auto;
 }
 
@@ -94,37 +94,81 @@ body {
 
     <!-- LETTERA -->
     <div id="letter" class="letter text-left text-sm leading-relaxed">
-      <p class="font-semibold mb-4">
-        Alla Suprema e Temutissima Dittatrice,
+
+      <p class="font-semibold mb-1">
+        Alla Suprema, Ineguagliabile e Temutissima Dittatrice,
+      </p>
+      <p class="italic mb-4">
+        Colei il cui sguardo fa tremare i confini e accelera i battiti
+      </p>
+
+      <p class="italic mb-4">
+        Oggetto: Richiesta ufficiale di udienza privata
+        <span class="text-xs">(possibilmente ravvicinata)</span>
       </p>
 
       <p class="mb-4">
-        il sottoscritto, suddito leale ma colpito da
+        Il/la sottoscritto/a, leale suddito/a ma segretamente colpito/a da
         un’ammirazione non del tutto istituzionale,
-        osa richiedere un’udienza privata.
+        <strong>OSA RICHIEDERE</strong> – con coraggio quasi sovversivo –
+        un incontro dal vivo con Vostra Eccellentissima Autorità.
       </p>
+
+      <p class="mb-2">
+        L’incontro proposto avrebbe finalità altamente strategiche, tra cui:
+      </p>
+
+      <ul class="list-disc pl-5 mb-4">
+        <li>
+          verificare se dal vivo il Vostro carisma sia davvero così pericoloso come si dice;
+        </li>
+        <li>
+          sostenere uno scambio di sguardi sufficientemente intenso da poter essere considerato atto politico;
+        </li>
+        <li>
+          mettere a rischio l’ordine pubblico con un sorriso
+          <span class="italic">(ovviamente sotto controllo del Regime)</span>.
+        </li>
+      </ul>
+
+      <p class="mb-2">
+        Il/la richiedente si dichiara:
+      </p>
+
+      <ul class="list-disc pl-5 mb-4">
+        <li>
+          pronto/a a presentarsi puntuale, elegante e sorprendentemente obbediente;
+        </li>
+        <li>
+          disposto/a a sottostare a interrogatori, sanzioni… o complimenti;
+        </li>
+        <li>
+          consapevole che un Vostro sì potrebbe causare conseguenze irreversibili
+          <span class="italic">(e graditissime)</span>.
+        </li>
+      </ul>
 
       <p class="mb-4">
-        L’incontro, fissato per
-        <strong>domani pomeriggio</strong>,
-        avrebbe lo scopo di verificare se dal vivo
-        il Vostro carisma sia davvero così destabilizzante.
+        In attesa di un Vostro Decreto Favorabile,<br>
+        anche informale, sussurrato o comunicato con mezzo sorriso,<br>
+        resto a completa disposizione del Potere.
       </p>
 
-      <p class="mb-6">
-        In attesa di un Vostro decreto,
-        resto a disposizione del Potere.
+      <p class="italic mb-6">
+        Con rispetto assoluto e una curiosità decisamente personale,<br>
+        Il/la Vostro/a più devoto/a (e un po’ incantato/a) suddito/a
       </p>
 
+      <!-- DECISIONE -->
       <div class="space-y-2">
         <button onclick="decision(true)"
           class="w-full bg-[#8B5E83] text-white py-2 rounded hover:opacity-90">
-          Accetto l’udienza
+          Concedo l’udienza di domani pomeriggio
         </button>
 
         <button onclick="decision(false)"
           class="w-full border border-gray-400 py-2 rounded hover:bg-gray-100">
-          Rifiuto (con clemenza)
+          Decreto respinto (con clemenza)
         </button>
       </div>
     </div>
@@ -153,7 +197,7 @@ function decision(ok) {
   letter.style.display = 'none';
   result.innerHTML = ok
     ? `🕊️ <strong>Decreto favorevole.</strong><br>
-       L’udienza di domani pomeriggio è concessa.`
+       L’udienza privata di domani pomeriggio è concessa.`
     : `📜 <strong>Decreto respinto.</strong><br>
        Il Regime apprezza comunque il coraggio.`;
   result.classList.remove('hidden');
