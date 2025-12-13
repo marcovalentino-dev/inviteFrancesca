@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Petizione Riservata</title>
 <script src="https://cdn.tailwindcss.com"></script>
@@ -12,15 +12,22 @@ body {
   background: #F4EFEA;
 }
 
+/* CONTENITORE */
+.envelope-wrapper {
+  position: relative;
+  width: 340px;
+  height: 220px;
+  cursor: pointer;
+}
+
 /* BUSTA */
 .envelope {
-  position: relative;
-  width: 320px;
-  height: 200px;
+  position: absolute;
+  inset: 0;
   background: #E6D5C3;
   border: 2px solid #C9B6A3;
-  border-radius: 6px;
-  cursor: pointer;
+  border-radius: 8px;
+  z-index: 3;
   overflow: hidden;
 }
 
@@ -32,38 +39,41 @@ body {
   width: 100%;
   height: 100%;
   background: #E6D5C3;
-  clip-path: polygon(0 0, 100% 0, 50% 55%);
+  clip-path: polygon(0 0, 100% 0, 50% 60%);
   transform-origin: top;
-  transition: transform 1s ease;
-  z-index: 3;
+  transition: transform 0.9s ease;
+  z-index: 4;
 }
 
-/* LETTERA */
+/* LETTERA (DIETRO) */
 .letter {
   position: absolute;
-  bottom: -100%;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
   background: #FFFDF8;
   border: 1px solid #DDD;
-  padding: 20px;
-  transition: bottom 1.2s ease;
-  z-index: 2;
+  padding: 22px;
+  z-index: 1;
+  transition: transform 1.1s ease, opacity 0.6s ease;
+  transform: translate(-50%, 120%);
+  opacity: 0;
 }
 
-/* APERTA */
+/* STATO APERTO */
 .open .flap {
   transform: rotateX(180deg);
 }
 
 .open .letter {
-  bottom: 10px;
+  transform: translate(-50%, 0);
+  opacity: 1;
 }
 
-/* FADE */
+/* FINALE */
 .fade-in {
-  animation: fadeIn 1s ease forwards;
+  animation: fadeIn 0.8s ease forwards;
 }
 
 @keyframes fadeIn {
@@ -82,9 +92,7 @@ body {
   </p>
 
   <!-- BUSTA -->
-  <div id="envelope" class="envelope mx-auto">
-    <div class="flap"></div>
-
+  <div id="wrapper" class="envelope-wrapper mx-auto">
     <div class="letter text-left text-sm leading-relaxed">
       <p class="font-semibold mb-3">
         Alla Suprema e Temutissima Dittatrice,
@@ -108,7 +116,6 @@ body {
         resto a disposizione del Potere.
       </p>
 
-      <!-- DECISIONE -->
       <div class="mt-4 text-center space-y-2">
         <button onclick="decision(true)"
           class="w-full bg-[#8B5E83] text-white py-2 rounded hover:opacity-90">
@@ -121,30 +128,31 @@ body {
         </button>
       </div>
     </div>
+
+    <div class="envelope">
+      <div class="flap"></div>
+    </div>
   </div>
 
-  <!-- RISPOSTA -->
   <div id="result" class="hidden mt-8 fade-in text-lg"></div>
 
 </div>
 
 <script>
-const envelope = document.getElementById('envelope');
+const wrapper = document.getElementById('wrapper');
 const result = document.getElementById('result');
 
-envelope.addEventListener('click', () => {
-  envelope.classList.add('open');
+wrapper.addEventListener('click', () => {
+  wrapper.classList.add('open');
 });
 
-function decision(accepted) {
-  envelope.classList.add('hidden');
-
-  result.innerHTML = accepted
+function decision(ok) {
+  wrapper.classList.add('hidden');
+  result.innerHTML = ok
     ? `🕊️ <strong>Decreto favorevole.</strong><br>
        L’udienza di domani pomeriggio è concessa.`
     : `📜 <strong>Decreto respinto.</strong><br>
        Il Regime apprezza comunque il coraggio.`;
-
   result.classList.remove('hidden');
 }
 </script>
