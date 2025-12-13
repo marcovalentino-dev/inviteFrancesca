@@ -1,158 +1,153 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Petizione Imperiale</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body { font-family: 'Georgia', serif; }
-    .hidden { display: none; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Petizione Riservata</title>
+<script src="https://cdn.tailwindcss.com"></script>
 
-    .fade-in {
-      animation: fadeIn 1s ease forwards;
-    }
+<style>
+body {
+  font-family: 'Georgia', serif;
+  background: #F4EFEA;
+}
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+/* BUSTA */
+.envelope {
+  position: relative;
+  width: 320px;
+  height: 200px;
+  background: #E6D5C3;
+  border: 2px solid #C9B6A3;
+  border-radius: 6px;
+  cursor: pointer;
+  overflow: hidden;
+}
 
-    .letter {
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
+/* FLAP */
+.flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #E6D5C3;
+  clip-path: polygon(0 0, 100% 0, 50% 55%);
+  transform-origin: top;
+  transition: transform 1s ease;
+  z-index: 3;
+}
 
-    .letter:hover {
-      transform: scale(1.05);
-    }
+/* LETTERA */
+.letter {
+  position: absolute;
+  bottom: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  background: #FFFDF8;
+  border: 1px solid #DDD;
+  padding: 20px;
+  transition: bottom 1.2s ease;
+  z-index: 2;
+}
 
-    .seal {
-      animation: pulse 2s infinite;
-    }
+/* APERTA */
+.open .flap {
+  transform: rotateX(180deg);
+}
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.08); }
-      100% { transform: scale(1); }
-    }
-  </style>
+.open .letter {
+  bottom: 10px;
+}
+
+/* FADE */
+.fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
 </head>
 
-<body class="bg-gradient-to-br from-purple-900 via-purple-700 to-pink-700 min-h-screen flex items-center justify-center p-6 text-gray-900">
+<body class="min-h-screen flex items-center justify-center">
 
-  <div class="bg-[#fdf6e3] shadow-2xl rounded-xl p-8 max-w-xl w-full text-center">
+<div class="text-center">
 
-    <!-- LETTERA CHIUSA -->
-    <div id="closed-letter" class="letter">
-      <div class="border-4 border-purple-800 rounded-lg p-10 relative">
-        <div class="seal absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-purple-800 text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl">
-          👑
-        </div>
-        <p class="italic text-lg">Petizione Imperiale Riservata</p>
-        <p class="text-sm mt-4 text-gray-600">Clicca per aprire</p>
-      </div>
-    </div>
+  <p class="mb-6 text-gray-600 italic">
+    Petizione Imperiale Riservata
+  </p>
 
-    <!-- LETTERA APERTA -->
-    <div id="open-letter" class="hidden fade-in text-left text-[15px] leading-relaxed">
-      <p class="font-semibold mb-4">
-        Alla Suprema, Ineguagliabile e Temutissima Dittatrice,<br>
-        Colei il cui sguardo fa tremare i confini<br>
-        e accelerare i battiti
+  <!-- BUSTA -->
+  <div id="envelope" class="envelope mx-auto">
+    <div class="flap"></div>
+
+    <div class="letter text-left text-sm leading-relaxed">
+      <p class="font-semibold mb-3">
+        Alla Suprema e Temutissima Dittatrice,
       </p>
 
-      <p class="italic mb-4">
-        Oggetto: Richiesta ufficiale di udienza privata (possibilmente ravvicinata)
-      </p>
-
-      <p class="mb-4">
-        Il sottoscritto, leale suddito ma segretamente colpito da
+      <p class="mb-3">
+        il sottoscritto, suddito leale ma colpito da
         un’ammirazione non del tutto istituzionale,
-        <strong>OSA RICHIEDERE</strong> – con coraggio quasi sovversivo –
-        un incontro dal vivo con Vostra Eccellentissima Autorità.
+        osa richiedere un’udienza privata.
       </p>
 
-      <p class="mb-2">L’incontro proposto avrebbe finalità altamente strategiche, tra cui:</p>
-      <ul class="list-disc pl-5 mb-4">
-        <li>verificare se dal vivo il Vostro carisma sia davvero così pericoloso;</li>
-        <li>sostenere uno scambio di sguardi classificabile come atto politico;</li>
-        <li>mettere a rischio l’ordine pubblico con un sorriso (sotto controllo del Regime).</li>
-      </ul>
-
-      <p class="mb-2">Il richiedente si dichiara:</p>
-      <ul class="list-disc pl-5 mb-4">
-        <li>puntuale, elegante e sorprendentemente obbediente;</li>
-        <li>disposto a interrogatori, sanzioni… o complimenti;</li>
-        <li>consapevole che un Vostro sì potrebbe causare conseguenze irreversibili (e graditissime).</li>
-      </ul>
+      <p class="mb-3">
+        L’incontro, fissato per
+        <strong>domani pomeriggio</strong>,
+        avrebbe lo scopo di verificare se dal vivo
+        il Vostro carisma sia davvero così destabilizzante.
+      </p>
 
       <p class="mb-4">
-        In attesa di un Vostro Decreto Favorabile,<br>
-        anche informale, sussurrato o comunicato con mezzo sorriso,
-        resto a completa disposizione del Potere.
+        In attesa di un Vostro decreto,
+        resto a disposizione del Potere.
       </p>
 
-      <p class="italic mb-6">
-        Con rispetto assoluto e una curiosità decisamente personale,<br>
-        Il Vostro più devoto (e un po’ incantato) suddito
-      </p>
+      <!-- DECISIONE -->
+      <div class="mt-4 text-center space-y-2">
+        <button onclick="decision(true)"
+          class="w-full bg-[#8B5E83] text-white py-2 rounded hover:opacity-90">
+          Accetto l’udienza
+        </button>
 
-      <!-- DECRETO -->
-      <div class="text-center">
-        <p class="font-semibold mb-3">La Dittatrice decreta:</p>
-        <div class="grid gap-3">
-          <button class="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600"
-            onclick="finalDecision('Udienza approvata con adrenalina 🏎️')">
-            Go-kart (domani pomeriggio)
-          </button>
-
-          <button class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600"
-            onclick="finalDecision('Udienza approvata sul mare 🌊')">
-            Passeggiata vicino al mare
-          </button>
-
-          <button class="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600"
-            onclick="finalDecision('Udienza approvata con drink 🍹')">
-            Drink e conversazione strategica
-          </button>
-
-          <button class="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700"
-            onclick="finalDecision('Decisione arbitraria della Dittatrice 😌')">
-            Decido io
-          </button>
-        </div>
+        <button onclick="decision(false)"
+          class="w-full border border-gray-400 py-2 rounded hover:bg-gray-100">
+          Rifiuto (con clemenza)
+        </button>
       </div>
     </div>
-
-    <!-- FINALE -->
-    <div id="final-message" class="hidden fade-in text-center text-lg font-semibold mt-6"></div>
-
   </div>
 
-  <script>
-    const closedLetter = document.getElementById('closed-letter');
-    const openLetter = document.getElementById('open-letter');
-    const finalMessage = document.getElementById('final-message');
+  <!-- RISPOSTA -->
+  <div id="result" class="hidden mt-8 fade-in text-lg"></div>
 
-    closedLetter.addEventListener('click', () => {
-      closedLetter.classList.add('hidden');
-      openLetter.classList.remove('hidden');
-    });
+</div>
 
-    function finalDecision(text) {
-      openLetter.classList.add('hidden');
-      finalMessage.innerHTML = `
-        🏛️ <strong>Decreto Emanato</strong><br><br>
-        ${text}<br><br>
-        <span class="font-normal">
-          L’udienza privata è fissata per<br>
-          <strong>domani pomeriggio</strong>.
-        </span> 😌
-      `;
-      finalMessage.classList.remove('hidden');
-    }
-  </script>
+<script>
+const envelope = document.getElementById('envelope');
+const result = document.getElementById('result');
+
+envelope.addEventListener('click', () => {
+  envelope.classList.add('open');
+});
+
+function decision(accepted) {
+  envelope.classList.add('hidden');
+
+  result.innerHTML = accepted
+    ? `🕊️ <strong>Decreto favorevole.</strong><br>
+       L’udienza di domani pomeriggio è concessa.`
+    : `📜 <strong>Decreto respinto.</strong><br>
+       Il Regime apprezza comunque il coraggio.`;
+
+  result.classList.remove('hidden');
+}
+</script>
 
 </body>
 </html>
